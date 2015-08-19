@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="all_margin_header_game">5sp</dimen>
+    <dimen name="left_margin_description">5sp</dimen>
+    <dimen name="borders_game_screen">5sp</dimen>
+    <dimen name="borders_for_click_button">50sp</dimen>
+    <dimen name="top_down_borders_game_screen">10sp</dimen>
+
+</resources>

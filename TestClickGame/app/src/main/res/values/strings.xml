@@ -1,0 +1,26 @@
+<resources>
+
+    <!--
+        Строковые переменные для приложения
+    -->
+    <string name="app_name">TestClickGame</string>
+    <string name="app_description">Test game version of crazy click</string>
+    <string name="title_score">Score:</string>
+    <string name="title_lvl">Level:</string>
+    <string name="title_question_helper">\?</string>
+    <string name="click_action_button">Click me</string>
+
+    <!--
+        Ключи для сохранения данных
+    -->
+    <string name="key_for_save_lvl">KeyForSaveLvl</string>
+    <string name="key_for_save_score">KeyForSaveScore</string>
+    <string name="you_winner">Победа</string>
+    <string name="want_play_again">Хотите сыграть снова?</string>
+    <string name="yes">Да</string>
+    <string name="no">Нет</string>
+    <string name="game_was_started">Игра началась</string>
+    <string name="link_for_request_price_click">https://raw.githubusercontent.com/9esa/ClickGae/master/tableLvl.txt</string>
+
+
+</resources>
