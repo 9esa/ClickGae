@@ -6,7 +6,8 @@ import android.os.Binder;
 import android.os.IBinder;
 import android.util.Log;
 
-import game.click.test.com.testclickgame.loading.LoadingTableResult;
+import game.click.test.com.testclickgame.data_base_helper.tables.action_table_price.LoadingTableResult;
+import game.click.test.com.testclickgame.fragments.ICallBackFromServer;
 import game.click.test.com.testclickgame.logical.LogicalGame;
 
 public class ServiceLoading extends Service {
@@ -18,11 +19,10 @@ public class ServiceLoading extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-
     }
 
-    public void loadScoreForGame(LogicalGame oLogicalGame){
-        new LoadingTableResult(oLogicalGame).startLoadSource(getBaseContext());
+    public void loadScoreForGame(LogicalGame oLogicalGame, ICallBackFromServer iCallBackFromServer){
+        new LoadingTableResult(oLogicalGame, iCallBackFromServer).startLoadSource(getBaseContext());
     }
 
     @Override

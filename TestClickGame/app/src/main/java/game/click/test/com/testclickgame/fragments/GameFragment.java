@@ -30,16 +30,19 @@ import game.click.test.com.testclickgame.services.ServiceLoading;
 /**
  * Created by kirichenko on 18.08.2015.
  */
-public class GameFragment extends Fragment implements ICallbackPrintInfo{
+public class GameFragment extends Fragment implements ICallbackPrintInfo, ICallBackFromServer{
 
     private TextView tvValueScore, tvValueLvl;
     private Button btnHelp, btnClickMe;
 
     private FrameLayout flSpaceForScore;
+    private FrameLayout flForProgressBar;
 
     private Animation oAnimationScore;
 
     private LogicalGame oLogicalGame;
+
+    private boolean bTryReloadData = false;
 
     private ServiceConnection sConnectionChecking;
     private Intent intentCheckingData;
@@ -54,14 +57,14 @@ public class GameFragment extends Fragment implements ICallbackPrintInfo{
 
         getAllElementsFromFragment(oView);
 
-        //TODO Необходимо придумать проверку на наличие загруженных правил, сейчас начало игры не правильное.
-
         if(getoLogicalGame() == null){
             oLogicalGame = new LogicalGame(getActivity());
-            oLogicalGame.loadCurrentInformation(this);
         }
 
-        connectionToService();
+        flForProgressBar.setVisibility(View.VISIBLE);
+        flForProgressBar.bringToFront();
+
+        oLogicalGame.startLoadInformation(this);
 
         return oView;
     }
@@ -71,7 +74,7 @@ public class GameFragment extends Fragment implements ICallbackPrintInfo{
         super.onDestroyView();
 
         if(getoLogicalGame() != null){
-            oLogicalGame.saveCurrentInformation();
+            getoLogicalGame().saveCurrentInformation();
         }
 
         if (!bConnectToService){
@@ -94,6 +97,7 @@ public class GameFragment extends Fragment implements ICallbackPrintInfo{
         btnClickMe = (Button) oView.findViewById(R.id.btnClickMe);
 
         flSpaceForScore = (FrameLayout) oView.findViewById(R.id.flSpaceForScore);
+        flForProgressBar = (FrameLayout) oView.findViewById(R.id.flProgressBar);
 
         addAllListeners();
 
@@ -104,6 +108,14 @@ public class GameFragment extends Fragment implements ICallbackPrintInfo{
         btnHelp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                HelpFragment oHelpFragment = new HelpFragment();
+                android.app.FragmentManager fragmentManager = getFragmentManager();
+
+                fragmentManager.beginTransaction()
+                        .replace(R.id.mainContainer, oHelpFragment)
+                        .addToBackStack("fragmentStack")
+                        .commit();
 
             }
         });
@@ -128,7 +140,7 @@ public class GameFragment extends Fragment implements ICallbackPrintInfo{
                 bConnectToService = true;
 
                 if(getoLogicalGame()!= null){
-                    oServiceLoading.loadScoreForGame(getoLogicalGame());
+                    delegateStartLoadFromServer();
                 }
 
             }
@@ -198,7 +210,8 @@ public class GameFragment extends Fragment implements ICallbackPrintInfo{
 
             finishDialog.setNegativeButton(R.string.no, new OnClickListener() {
                 public void onClick(DialogInterface dialog, int arg1) {
-                    getActivity().finish();
+                    Toast.makeText(getActivity().getApplicationContext(), R.string.game_was_not_started,
+                            Toast.LENGTH_LONG).show();
                 }
             });
 
@@ -209,14 +222,33 @@ public class GameFragment extends Fragment implements ICallbackPrintInfo{
 
     }
 
+
+    public boolean isbTryReloadData() {
+        return bTryReloadData;
+    }
+
+    public void setbTryReloadData(boolean bTryReloadData) {
+        this.bTryReloadData = bTryReloadData;
+    }
+
     private void delegateActionClick(){
-        createNewAddValue(oLogicalGame.actionClick(this));
+        createNewAddValue(getoLogicalGame().actionClick(this));
     }
 
     private void delegateRestart(){
-        if(oLogicalGame != null){
-            oLogicalGame.restartGame(this);
+        if(getoLogicalGame() != null){
+            getoLogicalGame().restartGame(this);
         }
+    }
+
+    private void delegateStartLoadFromServer(){
+        if(oServiceLoading != null){
+            oServiceLoading.loadScoreForGame(getoLogicalGame(), this);
+        }
+    }
+
+    private void delegateLoadCurrentState(){
+        getoLogicalGame().loadCurrentInformation(this);
     }
 
     private void removeViewAfterDisplaying(final TextView tvForRemove) {
@@ -242,12 +274,9 @@ public class GameFragment extends Fragment implements ICallbackPrintInfo{
                                 }
                             });
                         }
-
                     }
                 });
-
             }
-
         });
 
     }
@@ -284,7 +313,34 @@ public class GameFragment extends Fragment implements ICallbackPrintInfo{
 
         tvValueScore.setText(iCurrentScore + "");
         tvValueLvl.setText(iCurrentLvl + "");
-        btnClickMe.setText(iPriceForClick + "");
+        btnClickMe.setText("+" + iPriceForClick);
 
+    }
+
+    @Override
+    public void callBackAboutSizeLvl(int iSize) {
+
+        if(iSize == 0){
+            /**
+             * Fix for not looping
+             */
+            if(!isbTryReloadData()){
+                connectionToService();
+                setbTryReloadData(true);
+            }
+        }else{
+            if(getoLogicalGame() != null){
+                delegateLoadCurrentState();
+                flForProgressBar.setVisibility(View.GONE);
+            }
+        }
+
+    }
+
+    @Override
+    public void loadComplete() {
+        if(getoLogicalGame() != null){
+            getoLogicalGame().initLoadFromDataBase();
+        }
     }
 }

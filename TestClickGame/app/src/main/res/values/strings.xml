@@ -15,12 +15,18 @@
     -->
     <string name="key_for_save_lvl">KeyForSaveLvl</string>
     <string name="key_for_save_score">KeyForSaveScore</string>
-    <string name="you_winner">Победа</string>
-    <string name="want_play_again">Хотите сыграть снова?</string>
+    <string name="you_winner">Вы прошли игру!</string>
+    <string name="want_play_again">Начать заново?</string>
     <string name="yes">Да</string>
     <string name="no">Нет</string>
     <string name="game_was_started">Игра началась</string>
+    <string name="game_was_not_started">Как хотите</string>
+
+
     <string name="link_for_request_price_click">https://raw.githubusercontent.com/9esa/ClickGae/master/tableLvl.txt</string>
+    <string name="level">Уровень</string>
+    <string name="count_click_for_up">Количество очков для перехода на уровень</string>
+    <string name="price_for_click">Количество очков за клик</string>
 
 
 </resources>

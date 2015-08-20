@@ -7,6 +7,9 @@ public class ItemListOfLvl {
 
     private int iLvl, iCountToUp, iClickPrice;
 
+    public ItemListOfLvl() {
+    }
+
     public ItemListOfLvl(int iLvl, int iCountToUp, int iClickPrice) {
         this.iLvl = iLvl;
         this.iCountToUp = iCountToUp;

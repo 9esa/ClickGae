@@ -7,4 +7,9 @@ public interface ICallbackPrintInfo {
 
     void printInformation(int iCurrentLvl, int iCurrentScore, int iPriceForClick);
 
+    /**
+     * Return information about count lvl
+     * @param iSize Count of lvl
+     */
+    void callBackAboutSizeLvl(int iSize);
 }
