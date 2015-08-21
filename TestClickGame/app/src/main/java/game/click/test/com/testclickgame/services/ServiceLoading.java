@@ -6,7 +6,7 @@ import android.os.Binder;
 import android.os.IBinder;
 import android.util.Log;
 
-import game.click.test.com.testclickgame.data_base_helper.tables.action_table_price.LoadingTableResult;
+import game.click.test.com.testclickgame.dataBaseHelper.tables.actionTablePrice.LoadingTableResult;
 import game.click.test.com.testclickgame.fragments.ICallBackFromServer;
 import game.click.test.com.testclickgame.logical.LogicalGame;
 

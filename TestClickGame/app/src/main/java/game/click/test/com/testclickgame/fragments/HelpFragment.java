@@ -16,8 +16,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import game.click.test.com.testclickgame.R;
-import game.click.test.com.testclickgame.data_base_helper.DataBaseHelper;
-import game.click.test.com.testclickgame.data_base_helper.tables.action_table_price.TableResults;
+import game.click.test.com.testclickgame.dataBaseHelper.DataBaseHelper;
+import game.click.test.com.testclickgame.dataBaseHelper.tables.actionTablePrice.TableResults;
 
 /**
  * Created by kirichenko on 20.08.2015.

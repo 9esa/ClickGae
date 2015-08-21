@@ -1,4 +1,4 @@
-package game.click.test.com.testclickgame.load_infromation;
+package game.click.test.com.testclickgame.loadInfromation;
 
 import android.util.Log;
 

@@ -1,4 +1,4 @@
-package game.click.test.com.testclickgame.data_base_helper.tables.action_table_price;
+package game.click.test.com.testclickgame.dataBaseHelper.tables.actionTablePrice;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteStatement;
@@ -8,10 +8,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import game.click.test.com.testclickgame.R;
-import game.click.test.com.testclickgame.data_base_helper.DataBaseHelper;
+import game.click.test.com.testclickgame.dataBaseHelper.DataBaseHelper;
 import game.click.test.com.testclickgame.fragments.ICallBackFromServer;
-import game.click.test.com.testclickgame.load_infromation.AsyncLoadingInformation;
-import game.click.test.com.testclickgame.load_infromation.ICallbackForLoadingMainInformation;
+import game.click.test.com.testclickgame.loadInfromation.AsyncLoadingInformation;
+import game.click.test.com.testclickgame.loadInfromation.ICallbackForLoadingMainInformation;
 import game.click.test.com.testclickgame.logical.LogicalGame;
 
 /**

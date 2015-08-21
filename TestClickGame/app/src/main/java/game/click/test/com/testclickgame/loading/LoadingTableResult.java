@@ -9,8 +9,8 @@ import org.json.JSONObject;
 import java.util.HashMap;
 
 import game.click.test.com.testclickgame.R;
-import game.click.test.com.testclickgame.load_infromation.AsyncLoadingInformation;
-import game.click.test.com.testclickgame.load_infromation.ICallbackForLoadingMainInformation;
+import game.click.test.com.testclickgame.loadInfromation.AsyncLoadingInformation;
+import game.click.test.com.testclickgame.loadInfromation.ICallbackForLoadingMainInformation;
 import game.click.test.com.testclickgame.logical.ItemListOfLvl;
 import game.click.test.com.testclickgame.logical.LogicalGame;
 

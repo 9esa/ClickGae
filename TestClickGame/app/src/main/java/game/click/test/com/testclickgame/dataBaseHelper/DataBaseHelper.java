@@ -1,11 +1,11 @@
-package game.click.test.com.testclickgame.data_base_helper;
+package game.click.test.com.testclickgame.dataBaseHelper;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.provider.BaseColumns;
 
-import game.click.test.com.testclickgame.data_base_helper.tables.action_table_price.TableResults;
+import game.click.test.com.testclickgame.dataBaseHelper.tables.actionTablePrice.TableResults;
 
 public class DataBaseHelper extends SQLiteOpenHelper implements BaseColumns {
 
@@ -41,3 +41,4 @@ public class DataBaseHelper extends SQLiteOpenHelper implements BaseColumns {
     }
 
 }
+

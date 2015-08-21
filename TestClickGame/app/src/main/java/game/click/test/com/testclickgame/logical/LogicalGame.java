@@ -12,8 +12,8 @@ import android.os.Bundle;
 import java.util.HashMap;
 
 import game.click.test.com.testclickgame.R;
-import game.click.test.com.testclickgame.data_base_helper.DataBaseHelper;
-import game.click.test.com.testclickgame.data_base_helper.tables.action_table_price.TableResults;
+import game.click.test.com.testclickgame.dataBaseHelper.DataBaseHelper;
+import game.click.test.com.testclickgame.dataBaseHelper.tables.actionTablePrice.TableResults;
 import game.click.test.com.testclickgame.fragments.ICallbackPrintInfo;
 
 /**

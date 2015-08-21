@@ -1,9 +1,9 @@
-package game.click.test.com.testclickgame.data_base_helper.tables.action_table_price;
+package game.click.test.com.testclickgame.dataBaseHelper.tables.actionTablePrice;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import game.click.test.com.testclickgame.data_base_helper.DataBaseHelper;
+import game.click.test.com.testclickgame.dataBaseHelper.DataBaseHelper;
 
 /**
  * Created by kirichenko on 20.08.2015.
